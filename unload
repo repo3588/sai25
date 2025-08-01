@@ -1,0 +1,13 @@
+import boto3
+
+client = boto3.client('redshift-data')
+
+response = client.execute_statement(
+    ClusterIdentifier='your-cluster-id',
+    Database='your-db-name',
+    DbUser='your-db-user',
+    Sql='CALL sp_unload_data();',
+    WithEvent=False  # This prevents waiting for the job to finish
+)
+
+print("UNLOAD triggered. Glue job exiting.")
