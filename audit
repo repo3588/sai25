@@ -1,0 +1,3 @@
+stmt_id = response['Id']
+status = client.describe_statement(Id=stmt_id)
+print(status['Status'])  # SUBMITTED / RUNNING / FINISHED / FAILED
